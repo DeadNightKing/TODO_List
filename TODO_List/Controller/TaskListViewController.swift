@@ -10,6 +10,16 @@ import UIKit
 
 class TaskListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+    }
+    
+    @IBOutlet weak var prioritySegmentedControl: UISegmentedControl!
+    @IBOutlet weak var tableView: UITableView!
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -25,10 +35,5 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
         
     }
-    
-    
-    @IBOutlet weak var prioritySegmentedControl: UISegmentedControl!
-    @IBOutlet weak var tableView: UITableView!
-    
     
 }

@@ -55,7 +55,13 @@
                             <constraint firstItem="cpX-GS-ER7" firstAttribute="top" secondItem="2Ke-90-rMp" secondAttribute="bottom" constant="31" id="qM9-yw-Ef6"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Good List" id="PIF-aq-nbb"/>
+                    <navigationItem key="navigationItem" title="Good List" id="PIF-aq-nbb">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="ooB-xB-aKZ">
+                            <connections>
+                                <segue destination="Qb6-7n-mso" kind="presentation" id="ZdL-qi-KEA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="prioritySegmentedControl" destination="2Ke-90-rMp" id="IrS-Vk-SLk"/>
                         <outlet property="tableView" destination="cpX-GS-ER7" id="0d0-8c-Zt5"/>
@@ -64,6 +70,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="109.82142857142857"/>
+        </scene>
+        <!--Add Task-->
+        <scene sceneID="4YM-Nq-WZZ">
+            <objects>
+                <viewController id="lb6-E1-SKo" customClass="AddTaskViewController" customModule="TODO_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ydW-Tp-Kpf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zbw-l9-My3">
+                                <rect key="frame" x="104" y="153" width="206" height="32"/>
+                                <segments>
+                                    <segment title="High"/>
+                                    <segment title="Medium"/>
+                                    <segment title="Low"/>
+                                </segments>
+                            </segmentedControl>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wm8-hY-UGV">
+                                <rect key="frame" x="107" y="404" width="200" height="34"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Ga4-69-a0o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="VOy-1M-Yoh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zbw-l9-My3" firstAttribute="centerX" secondItem="ydW-Tp-Kpf" secondAttribute="centerX" id="hpO-MD-RV0"/>
+                            <constraint firstItem="wm8-hY-UGV" firstAttribute="centerY" secondItem="ydW-Tp-Kpf" secondAttribute="centerY" id="s1Q-GM-32U"/>
+                            <constraint firstItem="wm8-hY-UGV" firstAttribute="centerX" secondItem="ydW-Tp-Kpf" secondAttribute="centerX" id="tge-Lb-088"/>
+                            <constraint firstItem="zbw-l9-My3" firstAttribute="top" secondItem="VOy-1M-Yoh" secondAttribute="top" constant="97" id="zWQ-Ju-sWD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Task" id="yCC-5D-snY">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="7vq-jn-tzJ"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nvd-dW-epX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2773.913043478261" y="109.82142857142857"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VCQ-HK-Hra">
@@ -83,8 +132,29 @@
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="109.82142857142857"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="AeU-Xj-Xsg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qb6-7n-mso" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SB4-n7-HQ8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="lb6-E1-SKo" kind="relationship" relationship="rootViewController" id="4qO-gm-Z4Z"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DzD-TV-Cx5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1863.7681159420292" y="109.82142857142857"/>
+        </scene>
     </scenes>
     <resources>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
