@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 class TaskListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -16,6 +17,8 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
     }
+    
+    let disposedBag = DisposeBag()
     
     @IBOutlet weak var prioritySegmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
@@ -33,7 +36,20 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath)
         
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let navC = segue.destination as? UINavigationController,
+              let addTVC = navC.viewControllers.first as? AddTaskViewController
+        else {
+            fatalError("Controller not found")
+        }
         
+        addTVC.taskSubjectObservable
+            .subscribe(onNext:{ task in
+                print(task)
+            })
+            .disposed(by: disposedBag)
     }
     
 }

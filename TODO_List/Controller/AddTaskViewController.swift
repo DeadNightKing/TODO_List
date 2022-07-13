@@ -7,8 +7,15 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 class AddTaskViewController: UIViewController {
+    
+    private let taskSubject = PublishSubject<Task>() //發出Task
+    
+    var taskSubjectObservable: Observable<Task> { //觀測前面發出的Task
+        return taskSubject.asObservable()
+    }
     
     @IBOutlet weak var prioritySegementedControl: UISegmentedControl!
     @IBOutlet weak var taskTitleTextField: UITextField!
@@ -21,6 +28,9 @@ class AddTaskViewController: UIViewController {
                     
         let task = Task(title: title, priority: priority)
         
+        taskSubject.onNext(task)
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
